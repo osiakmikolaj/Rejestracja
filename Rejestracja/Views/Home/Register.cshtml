@@ -1,0 +1,56 @@
+﻿@model Rejestracja.Models.User
+@{
+    ViewData["Title"] = "Registration form";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
+{
+    <div>
+        <label for="Name">Name:</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+    <div>
+        <label for="LastName">Last name:</label>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.LastName)
+    </div>
+    <div>
+        <label for="Email">E-mail address:</label>
+        @Html.TextBoxFor(x => x.Email, new { @type = "email", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div>
+        <label for="ConfirmPassoword">Password confirmation:</label>
+        @Html.PasswordFor(x => x.ConfirmPassoword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ConfirmPassoword)
+    </div>
+    <div>
+        <label for="Phone">Phone number:</label>
+        @Html.TextBoxFor(x => x.Phone, new { @type = "tel", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Phone)
+    </div>
+    <div>
+        <label for="Age">Age:</label>
+        @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Age)
+    </div>
+    <div>
+        <label for="City">City:</label>
+        @Html.DropDownListFor(x => x.City, Html.GetEnumSelectList<Rejestracja.Models.Cities>(), "Select a city", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.City)
+    </div>
+    <div>
+        <br />
+        <button type="submit" class="btn btn-primary">Register</button>
+        <input type="reset" value="Clear" class="btn-secondary" />
+    </div>
+}
+
